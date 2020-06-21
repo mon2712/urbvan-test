@@ -13,13 +13,13 @@ const MapComponent = (props) => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const { origin, destination, travelMode } = props
+    const { location, travelMode } = props
 
     const directionsService = new google.maps.DirectionsService()
     directionsService.route(
       {
-        origin: origin,
-        destination: destination,
+        origin: location.origin,
+        destination: location.destination,
         travelMode: travelMode,
         provideRouteAlternatives: true,
       },
@@ -50,7 +50,7 @@ export default compose(
     googleMapURL:
       "https://maps.googleapis.com/maps/api/js?key=AIzaSyAqSAYiqpypE3BF_i-FYela4XfEyW8nhAg&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />,
+    containerElement: <div style={{ height: `800px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
   withScriptjs,
