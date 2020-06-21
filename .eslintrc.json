@@ -1,0 +1,30 @@
+{
+  "plugins": [
+    "prettier",
+    "react-hooks"
+  ],
+  "extends": [
+    "plugin:prettier/recommended",
+    "react-app"
+  ],
+  "parser": "babel-eslint",
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "es5"
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+  },
+  "env": {
+    "jest": true
+  },
+  "globals": {
+    "page": true,
+    "browser": true,
+    "context": true,
+    "jestPuppeteer": true
+  }
+}
