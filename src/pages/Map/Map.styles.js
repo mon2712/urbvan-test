@@ -18,3 +18,7 @@ export const ContainerMap = styled(Col)`
 export const StyledButton = styled(Button)`
   width: 100%;
 `
+
+export const CardsContainer = styled.div`
+  margin-top: 1rem;
+`

@@ -10,12 +10,15 @@ import {
   ContainerMap,
   ContainerForm,
   StyledButton,
+  CardsContainer,
 } from "./Map.styles.js"
+import RouteInformationCard from "../../components/RouteInformationCard/index.js"
 
 const MapContainer = (props) => {
-  const [origin, setOrigin] = useState("Chicago, IL")
-  const [destination, setDestination] = useState("Los Angeles")
-  const [directions, setDirections] = useState({ origin, destination })
+  const { routes } = props
+  const [origin, setOrigin] = useState(null)
+  const [destination, setDestination] = useState(null)
+  const [directions, setDirections] = useState(null)
 
   const handleChange = (e) => {
     if (e.target.name === "origin") {
@@ -64,6 +67,22 @@ const MapContainer = (props) => {
                 BUSCAR RUTA
               </StyledButton>
             </Form>
+
+            <CardsContainer>
+              {directions &&
+                routes &&
+                routes.length &&
+                routes.map((route) =>
+                  route.legs.map((leg) => (
+                    <RouteInformationCard
+                      origin={origin}
+                      destination={destination}
+                      distance={leg.distance}
+                      duration={leg.duration}
+                    />
+                  ))
+                )}
+            </CardsContainer>
           </ContainerForm>
           <ContainerMap lg={8}>
             <GoogleMap isMarkerShown travelMode="DRIVING" location={directions} />
