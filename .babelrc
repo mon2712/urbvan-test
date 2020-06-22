@@ -4,7 +4,8 @@
       "root": ["./src"],
       "alias": {
         "components": "./components",
-        "pages": "./pages"
+        "pages": "./pages",
+        "redux": "./redux"
       }
     }]
   ]

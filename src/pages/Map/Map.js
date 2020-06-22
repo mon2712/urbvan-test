@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import { connect } from "react-redux"
+import { compose } from "recompose"
 
 import { Container, Row, Form } from "react-bootstrap"
 import Page from "components/Page"
@@ -72,4 +74,10 @@ const MapContainer = (props) => {
   )
 }
 
-export default MapContainer
+const mapStateToProps = (state) => {
+  return {
+    routes: state.routes,
+  }
+}
+
+export default compose(connect(mapStateToProps, null))(MapContainer)

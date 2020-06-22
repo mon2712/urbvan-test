@@ -1,5 +1,6 @@
 /*global google*/
 import React, { useState, useEffect } from "react"
+import { connect } from "react-redux"
 import { compose, withProps } from "recompose"
 import {
   withScriptjs,
@@ -7,6 +8,9 @@ import {
   GoogleMap,
   DirectionsRenderer,
 } from "react-google-maps"
+
+import { setRoutes } from "redux/actions"
+import routesData from './fakeResponse.json'
 
 const MapComponent = (props) => {
   const [directions, setDirections] = useState(null)
@@ -24,7 +28,7 @@ const MapComponent = (props) => {
         provideRouteAlternatives: true,
       },
       (result, status) => {
-        console.log(result)
+        props.setRoutes(routesData.routes)
         if (status === google.maps.DirectionsStatus.OK) {
           setDirections(result)
         } else {
@@ -45,6 +49,10 @@ const MapComponent = (props) => {
   )
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  setRoutes: (routes) => dispatch(setRoutes(routes)),
+})
+
 export default compose(
   withProps({
     googleMapURL:
@@ -54,5 +62,6 @@ export default compose(
     mapElement: <div style={{ height: `100%` }} />,
   }),
   withScriptjs,
-  withGoogleMap
+  withGoogleMap,
+  connect(null, mapDispatchToProps)
 )(MapComponent)

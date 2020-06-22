@@ -1,0 +1,18 @@
+{
+  "routes": [
+    {
+      "legs": [
+        {
+          "distance": {
+            "text": "1.6 mi",
+            "value": 2619
+          },
+          "duration": {
+            "text": "9 mins",
+            "value": 516
+          }
+        }
+      ]
+    }
+  ]
+}
