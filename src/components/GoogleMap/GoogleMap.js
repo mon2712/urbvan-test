@@ -10,32 +10,37 @@ import {
 } from "react-google-maps"
 
 import { setRoutes } from "redux/actions"
-import routesData from './fakeResponse.json'
+import routesData from "./fakeResponse.json"
 
 const MapComponent = (props) => {
   const [directions, setDirections] = useState(null)
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const { location, travelMode } = props
+    const {
+      location,
+      travelMode,
+    } = props
 
-    const directionsService = new google.maps.DirectionsService()
-    directionsService.route(
-      {
-        origin: location.origin,
-        destination: location.destination,
-        travelMode: travelMode,
-        provideRouteAlternatives: true,
-      },
-      (result, status) => {
-        props.setRoutes(routesData.routes)
-        if (status === google.maps.DirectionsStatus.OK) {
-          setDirections(result)
-        } else {
-          setError(result)
+    if (location && location.origin && location.destination) {
+      const directionsService = new google.maps.DirectionsService()
+      directionsService.route(
+        {
+          origin: location.origin,
+          destination: location.destination,
+          travelMode: travelMode,
+          provideRouteAlternatives: true,
+        },
+        (result, status) => {
+          props.setRoutes(routesData.routes)
+          if (status === google.maps.DirectionsStatus.OK) {
+            setDirections(result)
+          } else {
+            setError(result)
+          }
         }
-      }
-    )
+      )
+    }
   })
 
   if (error) {

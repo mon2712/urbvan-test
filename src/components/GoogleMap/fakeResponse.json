@@ -11,6 +11,16 @@
             "text": "9 mins",
             "value": 516
           }
+        },
+        {
+          "distance": {
+            "text": "2.5 mi",
+            "value": 2620
+          },
+          "duration": {
+            "text": "12 mins",
+            "value": 500
+          }
         }
       ]
     }
