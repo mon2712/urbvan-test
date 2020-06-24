@@ -10,7 +10,6 @@ import {
 } from "react-google-maps"
 
 import { setRoutes } from "redux/actions"
-import routesData from "./fakeResponse.json"
 
 const MapComponent = (props) => {
   const [directions, setDirections] = useState(null)
@@ -32,9 +31,9 @@ const MapComponent = (props) => {
           provideRouteAlternatives: true,
         },
         (result, status) => {
-          props.setRoutes(routesData.routes)
           if (status === google.maps.DirectionsStatus.OK) {
             setDirections(result)
+            props.setRoutes(result.routes)
           } else {
             setError(result)
           }
