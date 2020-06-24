@@ -61,7 +61,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default compose(
   withProps({
     googleMapURL:
-      "https://maps.googleapis.com/maps/api/js?key=AIzaSyAqSAYiqpypE3BF_i-FYela4XfEyW8nhAg&v=3.exp&libraries=geometry,drawing,places",
+      "https://maps.googleapis.com/maps/api/js?key=AIzaSyA1lqeER_Mw5wuD49qVx1HCIJI_j3tIxqw&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `800px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
